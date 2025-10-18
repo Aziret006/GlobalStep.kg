@@ -97,7 +97,11 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/10">
+          <div
+            className={`md:hidden py-4 border-t border-border/10 ${
+              isScrolled ? "" : "bg-[#0056FF] rounded-2xl px-4"
+            }`}
+          >
             <nav className="flex flex-col gap-4">
               {menuItems.map((item, index) => (
                 <a
@@ -113,12 +117,23 @@ export function Header() {
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border/10">
                 <a href="tel:+996509400080">
-                  <Button variant="outline" size="sm" className="w-full bg-transparent">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className={`w-full ${
+                      isScrolled
+                        ? "bg-transparent text-foreground"
+                        : "bg-transparent text-white border-white"
+                    }`}
+                  >
                     <Phone className="w-4 h-4 mr-2" />
                     +996 509 400 080
                   </Button>
                 </a>
-                <Button size="sm" className="w-full">
+                <Button
+                  size="sm"
+                  className={`w-full ${isScrolled ? "" : "bg-white text-[#0056FF]"}`}
+                >
                   Консультация
                 </Button>
               </div>
