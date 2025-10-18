@@ -17,11 +17,11 @@ export function Header() {
   }, [])
 
   const menuItems = [
-    { label: "Главная", href: "#" },
-    { label: "Страны", href: "#destinations" },
-    { label: "О нас", href: "#about" },
-    { label: "Отзывы", href: "#testimonials" },
-    { label: "Контакты", href: "#contact" },
+    { label: "Главная", href: "/#" },
+    { label: "Страны", href: "/#destinations" },
+    { label: "О нас", href: "/#about" },
+    { label: "Отзывы", href: "/#testimonials" },
+    { label: "Контакты", href: "/#contact" },
   ]
 
   return (

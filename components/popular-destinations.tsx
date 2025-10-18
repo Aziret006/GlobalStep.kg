@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
+import Link from "next/link"
 
 const destinations = [
   {
@@ -12,6 +13,7 @@ const destinations = [
     description: "Престижные университеты и широкие возможности для карьеры",
     image: "/american-university-campus-with-students.jpg",
     programs: "200+ программ",
+    slug: "usa",
   },
   {
     country: "Италия",
@@ -19,6 +21,7 @@ const destinations = [
     description: "Европейское образование с богатой культурой и историей",
     image: "/italian-university-architecture-historic-building.jpg",
     programs: "150+ программ",
+    slug: "italy",
   },
   {
     country: "Чехия",
@@ -26,6 +29,7 @@ const destinations = [
     description: "Доступное качественное образование в центре Европы",
     image: "/prague-university-building-charles-bridge.jpg",
     programs: "100+ программ",
+    slug: "czechia",
   },
   {
     country: "Китай",
@@ -33,6 +37,7 @@ const destinations = [
     description: "Современные технологии и перспективы в Азии",
     image: "/modern-chinese-university-campus-technology.jpg",
     programs: "180+ программ",
+    slug: "china",
   },
   {
     country: "Кипр",
@@ -40,6 +45,7 @@ const destinations = [
     description: "Средиземноморский климат и европейские стандарты",
     image: "/cyprus-university-by-mediterranean-sea.jpg",
     programs: "80+ программ",
+    slug: "cyprus",
   },
   {
     country: "Корея",
@@ -47,6 +53,7 @@ const destinations = [
     description: "Инновации, технологии и динамичная культура",
     image: "/korean-university-modern-campus-seoul.jpg",
     programs: "120+ программ",
+    slug: "korea",
   },
 ]
 
@@ -125,10 +132,12 @@ export function PopularDestinations() {
                         <h3 className="text-4xl md:text-5xl font-bold mb-6">{destination.country}</h3>
                         <p className="text-lg text-muted-foreground mb-8 leading-relaxed">{destination.description}</p>
                         <div className="space-y-4">
-                          <Button size="lg" className="w-full md:w-auto group">
-                            Узнать подробнее
-                            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                          </Button>
+                          <Link href={`/countries/${destination.slug}`}>
+                            <Button size="lg" className="w-full md:w-auto group">
+                              Узнать подробнее
+                              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                          </Link>
                           <Button size="lg" variant="outline" className="w-full md:w-auto bg-transparent">
                             Получить консультацию
                           </Button>
@@ -141,7 +150,6 @@ export function PopularDestinations() {
             </div>
           </div>
 
-          {/* Navigation Arrows */}
           <button
             onClick={goToPrevious}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white shadow-xl rounded-full p-3 hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110"
@@ -157,7 +165,6 @@ export function PopularDestinations() {
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          {/* Dots Indicator */}
           <div className="flex justify-center gap-3 mt-8">
             {destinations.map((_, index) => (
               <button
